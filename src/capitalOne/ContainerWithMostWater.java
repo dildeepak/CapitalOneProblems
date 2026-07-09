@@ -1,0 +1,29 @@
+package capitalOne;
+
+public class ContainerWithMostWater {
+
+	public static void main(String[] args) {
+		int[] height = {25,15,65,86,95};
+		System.out.println(maxArea(height));
+	}
+	
+	public static int maxArea(int[] height) {
+		int maxWater=0;
+		int left=0;
+		int right=height.length-1;
+		
+		while(left<right) {			
+			int width=right - left;			
+			int minHeight= Math.min(height[left], height[right]);			
+			int area = width * minHeight;
+			maxWater=Math.max(maxWater, area);			
+			if(height[left] < height[right]) {
+				left++;
+			}else {
+				right--;
+			}
+		}
+		return maxWater;
+	}
+
+}
