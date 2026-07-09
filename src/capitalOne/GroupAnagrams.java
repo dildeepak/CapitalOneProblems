@@ -22,7 +22,7 @@ public class GroupAnagrams {
 
         for(String word:strs){
 
-           /**  int[] count = new int[26]; //count frequencies of each character from a to z
+            int[] count = new int[26]; //count frequencies of each character from a to z
             for(int i=0;i<word.length();i++){
                 count[word.charAt(i)-'a']++;
             }
@@ -30,15 +30,9 @@ public class GroupAnagrams {
             StringBuilder sb=new StringBuilder(); // building a unique string key example
             for(int num:count){
                 sb.append(num).append('#');
-            }**/
-
-            char[] count= new char[26]; //fixed size primitive array
-
-            for(int i=0;i<word.length();i++){
-                count[word.charAt(i) -'a']++;
             }
-            
-            String frquencyKey= new String(count);
+
+            String frquencyKey= sb.toString();
             anagramMap.computeIfAbsent(frquencyKey, k-> new ArrayList<>()).add(word); //retrive the matching group loist and add the word
         }
         return new ArrayList<>(anagramMap.values());
